@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results - {{ company }}</title>
+    <style>
+        .section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Analysis Results for {{ company }}</h1>
+    
+    <div class="section">
+        <h2>Technical Analysis</h2>
+        <div>{{ tech_summary | safe }}</div>
+    </div>
+    
+    <div class="section">
+        <h2>Simple Story</h2>
+        <div>{{ layman_story | safe }}</div>
+    </div>
+    
+    <div class="section">
+        <h2>Conclusion & Recommendation</h2>
+        <div>{{ conclusion | safe }}</div>
+    </div>
+
+    <!-- Add this after conclusion section -->
+{% if visuals %}
+<div class="visualizations">
+    <h2>Key Metrics Visualization</h2>
+    
+    {% if visuals.revenue_profit %}
+    <div class="chart">
+        <h3>Revenue vs Profit</h3>
+        <img src="data:image/png;base64,{{ visuals.revenue_profit }}" alt="Revenue vs Profit">
+    </div>
+    {% endif %}
+    
+    {% if visuals.growth %}
+    <div class="chart">
+        <h3>Growth Analysis</h3>
+        <img src="data:image/png;base64,{{ visuals.growth }}" alt="Growth Radar">
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+
+    <a href="/">Analyze Another Company</a>
+</body>
+</html>

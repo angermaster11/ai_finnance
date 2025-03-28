@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Statement Analyzer</title>
+</head>
+<body>
+    <h1>Upload Financial Statements</h1>
+    
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="messages">
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+    
+    <form method="POST" action="/upload" enctype="multipart/form-data">
+        <div>
+            <label>Company Name:</label>
+            <input type="text" name="company" required>
+        </div>
+        <div>
+            <label>Financial Statement (PDF):</label>
+            <input type="file" name="file" accept=".pdf" required>
+        </div>
+        <button type="submit">Analyze</button>
+    </form>
+    
+    <div class="term-explainer">
+        <h3>Don't understand a term?</h3>
+        <input type="text" id="termInput" placeholder="Enter financial term">
+        <button onclick="explainTerm()">Explain</button>
+        <div id="termExplanation"></div>
+    </div>
+    
+    <script>
+        function explainTerm() {
+            const term = document.getElementById('termInput').value;
+            fetch('/explain_term', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `term=${encodeURIComponent(term)}`
+            })
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('termExplanation').innerHTML = text;
+            })
+            .catch(error => {
+                document.getElementById('termExplanation').innerHTML = "Error: " + error;
+            });
+        }
+    </script>
+</body>
+</html>
