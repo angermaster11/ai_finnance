@@ -1,46 +1,197 @@
+/* Base Styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    text-align: center;
-    padding: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.container {
-    background: white;
-    padding: 30px;
-    width: 50%;
-    margin: auto;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+h1, h2, h3 {
+    color: #2c3e50;
+    margin-bottom: 20px;
 }
 
 h1 {
-    color: #333;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 30px;
+    color: #3498db;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-top: 40px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    color: #2980b9;
+}
+
+/* Form Styles */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 600px;
+}
+
+form div {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="file"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
 }
 
 button {
-    background: #007bff;
+    background-color: #3498db;
     color: white;
-    padding: 10px 20px;
     border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    font-weight: 600;
 }
 
 button:hover {
-    background: #0056b3;
+    background-color: #2980b9;
 }
 
-select, input {
-    padding: 10px;
-    margin: 10px;
+/* Messages */
+.messages {
+    margin: 20px auto;
+    max-width: 600px;
 }
 
-.chart {
-    margin: 20px 0;
-    padding: 15px;
-    border: 1px solid #eee;
+.messages p {
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.messages .error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.messages .success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* Term Explainer */
+.term-explainer {
+    background: white;
+    padding: 25px;
     border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 600px;
 }
-.chart img {
-    max-width: 100%;
+
+#termInput {
+    margin-bottom: 15px;
+}
+
+#termExplanation {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #3498db;
+    border-radius: 4px;
+}
+
+/* Results Page Specific (if you're using the same CSS file) */
+.chart-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 30px 0;
+}
+
+.chart-container img {
+    width: 100%;
     height: auto;
+    border-radius: 4px;
+}
+
+.section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    form, .term-explainer {
+        padding: 20px;
+    }
+}
+
+/* Animations */
+button {
+    transition: transform 0.2s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Additional Visual Enhancements */
+input[type="file"]::file-selector-button {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    padding: 8px 12px;
+    margin-right: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: #dee2e6;
 }
